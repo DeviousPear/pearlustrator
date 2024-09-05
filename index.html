@@ -1,0 +1,129 @@
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="/vite.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pearlustrator</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="app.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <main class="flex flex-row w-screen h-screen">
+            <div class="h-screen bg-neutral-500 flex flex-col items-center w-14">
+                <button class="p-4 hover:bg-blue-300" id="upload">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-image-up">
+                        <path
+                            d="M10.3 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10l-3.1-3.1a2 2 0 0 0-2.814.014L6 21" />
+                        <path d="m14 19.5 3-3 3 3" />
+                        <path d="M17 22v-5.5" />
+                        <circle cx="9" cy="9" r="2" />
+                    </svg>
+                </button>
+                <button class="p-4 hover:bg-blue-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-square-dashed-mouse-pointer">
+                        <path
+                            d="M12.034 12.681a.498.498 0 0 1 .647-.647l9 3.5a.5.5 0 0 1-.033.943l-3.444 1.068a1 1 0 0 0-.66.66l-1.067 3.443a.5.5 0 0 1-.943.033z" />
+                        <path d="M5 3a2 2 0 0 0-2 2" />
+                        <path d="M19 3a2 2 0 0 1 2 2" />
+                        <path d="M5 21a2 2 0 0 1-2-2" />
+                        <path d="M9 3h1" />
+                        <path d="M9 21h2" />
+                        <path d="M14 3h1" />
+                        <path d="M3 9v1" />
+                        <path d="M21 9v2" />
+                        <path d="M3 14v1" />
+                    </svg>
+                </button>
+                <button class="p-4 hover:bg-blue-300" id="download">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-download">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" x2="12" y1="15" y2="3" />
+                    </svg>
+                </button>
+                <button class="p-4 hover:bg-blue-300" id="type">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-type">
+                        <polyline points="4 7 4 4 20 4 20 7" />
+                        <line x1="9" x2="15" y1="20" y2="20" />
+                        <line x1="12" x2="12" y1="4" y2="20" />
+                    </svg>
+                </button>
+                <button class="p-4 hover:bg-blue-300" id="view">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-scan-eye">
+                        <path d="M3 7V5a2 2 0 0 1 2-2h2" />
+                        <path d="M17 3h2a2 2 0 0 1 2 2v2" />
+                        <path d="M21 17v2a2 2 0 0 1-2 2h-2" />
+                        <path d="M7 21H5a2 2 0 0 1-2-2v-2" />
+                        <circle cx="12" cy="12" r="1" />
+                        <path
+                            d="M18.944 12.33a1 1 0 0 0 0-.66 7.5 7.5 0 0 0-13.888 0 1 1 0 0 0 0 .66 7.5 7.5 0 0 0 13.888 0" />
+                    </svg>
+                </button>
+                <button class="p-4 hover:bg-blue-300" id="add-font">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-file-type">
+                        <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+                        <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+                        <path d="M9 13v-1h6v1" />
+                        <path d="M12 12v6" />
+                        <path d="M11 18h2" />
+                    </svg>
+                </button>
+                <button class="p-4 hover:bg-blue-300" id="collapse">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left-to-line"><path d="M3 19V5"/><path d="m13 6-6 6 6 6"/><path d="M7 12h14"/></svg>
+                </button>
+            </div>
+            <div id="text-edit" class="edit h-screen w-48 bg-neutral-400 p-3">
+                <div class="mb-6">
+                    <label class="block uppercase text-xs   ">Font</label>
+                    <select id="fonts-select" class="w-full">
+
+                    </select>
+                </div>
+                <div class="mb-6">
+                    <label class="block uppercase text-xs   ">Font</label>
+                    <select id="fonts-select" class="w-full">
+
+                    </select>
+                </div>
+                <div class="mb-6">
+                    <label class="block uppercase text-xs   ">Font</label>
+                    <select id="fonts-select" class="w-full">
+
+                    </select>
+                </div>
+
+
+            </div>
+            <div
+                class="flex-grow h-screen flex justify-center align-middle items-center bg-neutral-700 overflow-scroll">
+                <svg id="renderer" class="bg-repeat w-1/2 h-1/2"
+                    style="background-image: url(&quot;checker.png&quot;); background-size: 20px;">
+                    <style id="render-style">
+
+                    </style>
+                </svg>
+            </div>
+        </main>
+    </div>
+
+
+</body>
+
+</html>
