@@ -92,31 +92,25 @@
             <div id="text-edit" class="edit h-screen w-48 bg-neutral-400 p-3">
                 <div class="mb-6">
                     <label class="block uppercase text-xs   ">Font</label>
-                    <select id="fonts-select" class="w-full">
+                    <select id="font-select" class="w-full">
 
                     </select>
                 </div>
                 <div class="mb-6">
-                    <label class="block uppercase text-xs   ">Font</label>
-                    <select id="fonts-select" class="w-full">
-
-                    </select>
-                </div>
-                <div class="mb-6">
-                    <label class="block uppercase text-xs   ">Font</label>
-                    <select id="fonts-select" class="w-full">
-
-                    </select>
+                    <label class="block uppercase text-xs   ">Font Size</label>
+                    <input id="font-size" type="number" class="w-full focus:outline-none">
                 </div>
 
 
             </div>
             <div
-                class="flex-grow h-screen flex justify-center align-middle items-center bg-neutral-700 overflow-scroll">
+                class="flex-grow h-screen flex justify-center align-middle items-center bg-neutral-700 overflow-hidden">
                 <svg id="renderer" class="bg-repeat w-1/2 h-1/2"
                     style="background-image: url(&quot;checker.png&quot;); background-size: 20px;">
                     <style id="render-style">
-
+                        .border {
+                            outline: solid #00a7f4 3px;
+                        }
                     </style>
                 </svg>
             </div>

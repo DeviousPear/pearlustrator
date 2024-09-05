@@ -19,6 +19,23 @@ function makeDraggable(elem) {
     let svg = elem
     svg.addEventListener('mousedown', (evt) => {
         window.selectedElement = evt.target
+        window.editorSelectedElement?.classList.remove("border")
+        window.editorSelectedElement = svg
+        document.getElementById("font-select").value = svg.getAttributeNS(null, "font-family") || "Times New Roman"
+        svg.classList.add("border")
+        if (svg.nodeName == "text") {
+            let installedFont = document.getElementById("font-select").value
+            document.getElementById("text-edit").style.setProperty("display", "block")
+            document.getElementById("font-select").innerHTML = ""
+            window.installedFonts.forEach(i => {
+                let selectItem = document.createElement("option")
+                selectItem.innerText = i
+                document.getElementById("font-select").appendChild(selectItem)
+            })
+            document.getElementById("font-select").value = installedFont
+
+        } else console.log(svg.nodeName)
+        document.getElementById("font-select").value = svg.getAttributeNS(null, "font-family") || "Times New Roman"
     })
     svg.addEventListener('mousemove', (evt) => {
         if (evt.target == window.selectedElement) {
@@ -28,10 +45,11 @@ function makeDraggable(elem) {
             let y = parseFloat(selectedElement.getAttributeNS(null, "y")) || 0
             window.selectedElement.setAttributeNS(null, "y", y + evt.movementY)
         }
-        
+
     });
     svg.addEventListener('mouseup', () => window.selectedElement = null)
     svg.addEventListener('mouseleave', () => window.selectedElement = null)
+
 }
 document.getElementById("upload").addEventListener("click", () => {
     let elem = document.createElement("input")
@@ -59,7 +77,7 @@ document.getElementById("download").addEventListener("click", () => {
     ctx.drawImage()
 })
 document.getElementById("view").addEventListener("click", () => {
-    let svgText = `<svg xmlns="http://www.w3.org/2000/svg" >${renderer.innerHTML}</svg>`
+    let svgText = `<svg xmlns="http://www.w3.org/2000/svg" >${renderer.innerHTML.replace("border", "")}</svg>`
     let svg = new Blob([svgText], {
         type: "image/svg+xml;charset=utf-8"
     })
@@ -89,22 +107,46 @@ renderer.addEventListener("wheel", (evt) => {
         renderer.style.setProperty("width", parseFloat(getComputedStyle(renderer).width.replace("px", "")) + (evt.deltaY * 0.7))
         renderer.style.setProperty("height", parseFloat(getComputedStyle(renderer).height.replace("px", "")) + (evt.deltaY * 0.7))
     }
-    
+
 })
 document.getElementById("add-font").addEventListener("click", async () => {
     let fontName = prompt("Enter a valid Google Fonts name")
     if (fontName) {
-        let res = await fetch(`https://fonts.googleapis.com/css2?family=${fontName.replace(" ", "+")}:wght@300..700&display=swap`)
-        if (res.status !== 200) {
-            alert("Font error.") 
-        } else {
-            renderer.querySelector("style").append(
-                `@import url('https://fonts.googleapis.com/css2?family=${fontName.replace(" ", "+")}:wght@300..700&display=swap')`
-            )
-        }
+        fetch(`https://fonts.googleapis.com/css2?family=${fontName.replace(" ", "+")}:wght@300..700&display=swap`, {}).then(res => {
+            console.log(res)
+            if (!res.ok) {
+                alert("Font error.")
+            } else {
+                res.text().then(text => {
+                    let style = document.createElementNS("http://www.w3.org/2000/svg", "style")
+                    style.innerHTML = text
+                    renderer.appendChild(style)
+                    window.installedFonts.push(fontName)
+                    let installedFont = document.getElementById("font-select").value
+                    document.getElementById("font-select").innerHTML = ""
+                    window.installedFonts.forEach(i => {
+                        let selectItem = document.createElement("option")
+                        selectItem.innerText = i
+                        document.getElementById("font-select").appendChild(selectItem)
+                    })
+                    document.getElementById("font-select").value = installedFont
+                })
+            }
+        })
+
 
     }
 })
 document.getElementById("collapse").addEventListener("click", () => {
     document.querySelectorAll(".edit").forEach(i => i.style.display = "none")
+})
+renderer.addEventListener("keydown", e => {
+    if ((e.key == "Backspace" || e.key == "Delete")) window.editorSelectedElement.remove()
+})
+document.getElementById("font-select").addEventListener("input", () => {
+    console.log(document.getElementById("font-select").value)
+    window.editorSelectedElement.setAttributeNS(null, "font-family", document.getElementById("font-select").value)
+})
+document.getElementById("font-size").addEventListener("input", () => {
+    window.editorSelectedElement.setAttributeNS(null, "font-size", document.getElementById("font-size").value)
 })
