@@ -93,7 +93,7 @@ document.getElementById("type").addEventListener("click", () => {
         elem.setAttributeNS(null, "x", "50")
         elem.setAttributeNS(null, "y", "90")
         elem.addEventListener("dblclick", () => {
-            let newText = prompt("New text")
+            let newText = prompt("New text", elem.innerHTML)
             if (newText) {
                 elem.innerHTML = newText
             }
